@@ -16,12 +16,18 @@ namespace :db do
 desc 'invokes :environment task as a dependency'
   task :environment do  
     require_relative './config/environment'
-end
+  end
 
 desc 'migrate changes to your database'
   task :migrate => :environment do
     Student.create_table
   end
+  
+desc 'seed the database with some dummy data'
+  task :seed do
+    require_relative './db/seeds.rb'
+  end
+end
 end
 
 
